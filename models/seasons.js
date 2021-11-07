@@ -17,8 +17,7 @@ class Seasons {
   static get all() {
     return new Promise(async (resolve, reject) => {
       try {
-        // console.log(db);
-        const result = await db.query('SELECT * FROM test;');
+        const result = await db.query('SELECT * FROM Housemates;');
         console.log(result);
         resolve(result);
       } catch (error) {
@@ -32,6 +31,19 @@ class Seasons {
   }
   static get getSeasonsFromArray() {
     // TODO get all data for the seasons in a passed array.
+  }
+  static databaseInit() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        //DB INIT
+        const result = await db.query('CREATE TABLE Persons (PersonID int);');
+        console.log(result);
+        resolve(result);
+      } catch (error) {
+        console.log('error in model');
+        reject('error in model');
+      }
+    });
   }
   static addHousemate(housemateData) {
     // TODO add a housemate to the database.
