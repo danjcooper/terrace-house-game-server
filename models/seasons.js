@@ -33,10 +33,16 @@ class Seasons {
     // TODO get all data for the seasons in a passed array.
   }
   static databaseInit() {
+    const text = `
+    CREATE TABLE IF NOT EXISTS "seasons" (
+	    "id" SERIAL PRIMARY KEY,
+	    "name" VARCHAR(100) NOT NULL,
+	    "couples" INT NOT NULL
+    );`;
     return new Promise(async (resolve, reject) => {
       try {
         //DB INIT
-        const result = await db.query('CREATE TABLE Persons (PersonID int);');
+        const result = await db.query(text);
         console.log(result);
         resolve(result);
       } catch (error) {

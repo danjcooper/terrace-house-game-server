@@ -11,7 +11,7 @@ const seasons = ['B&GND', 'CD', 'B&GITC', 'AS', 'OND', 'T1920'];
 
 app.get('/:season', async (req, res) => {
   try {
-    const seasons = await Seasons.all;
+    const seasons = await Seasons.databaseInit();
     console.log(seasons);
   } catch (error) {
     console.log('error');
