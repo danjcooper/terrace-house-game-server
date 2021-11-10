@@ -1,4 +1,4 @@
-const db = require('../DB/dbConfig');
+const knex = require('../DB/dbConfig');
 
 class Seasons {
   constructor(data) {
@@ -15,15 +15,20 @@ class Seasons {
     this.imageURL = data.imageURL;
   }
   static get all() {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const result = await db.query('SELECT * FROM Housemates;');
-        console.log(result);
-        resolve(result);
-      } catch (error) {
-        console.log('error in model');
-        reject('error in model');
-      }
+    return new Promise((resolve, reject) => {
+      knex('seasons')
+        .insert({ name: 'Slaughterhouse Five', couples: 5 })
+        .then((rows) => {
+          console.log(rows);
+          resolve(rows);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject(err);
+        });
+
+      // const test = knex.select().from('seasons');
+      // const result = await db.query('SELECT * FROM Housemates;');
     });
   }
   static get getBySeason() {
@@ -33,22 +38,28 @@ class Seasons {
     // TODO get all data for the seasons in a passed array.
   }
   static databaseInit() {
-    const text = `
-    CREATE TABLE IF NOT EXISTS "seasons" (
-	    "id" SERIAL PRIMARY KEY,
-	    "name" VARCHAR(100) NOT NULL,
-	    "couples" INT NOT NULL
-    );`;
-    return new Promise(async (resolve, reject) => {
-      try {
-        //DB INIT
-        const result = await db.query(text);
-        console.log(result);
-        resolve(result);
-      } catch (error) {
-        console.log('error in model');
-        reject('error in model');
-      }
+    return new Promise((resolve, reject) => {
+      // knex.schema
+      //   .dropTableIfExists('housematesFTest')
+      //   .then((res) => resolve(res))
+      //   .catch((err) => reject(err));
+      knex.schema
+        .createTable('housematesnewestestst', (table) => {
+          table.increments();
+          table.string('name');
+          table.timestamps();
+          table.integer('dates');
+          table.integer('seasons');
+          table.foreign('seasons').references('seasons.seasonId');
+        })
+        .then((res) => {
+          console.log(res);
+          resolve(res);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject(err);
+        });
     });
   }
   static addHousemate(housemateData) {
