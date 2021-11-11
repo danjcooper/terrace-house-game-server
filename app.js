@@ -10,8 +10,15 @@ const port = 3000;
 const seasons = ['B&GND', 'CD', 'B&GITC', 'AS', 'OND', 'T1920'];
 
 app.get('/:season', async (req, res) => {
+  const data = {
+    name: 'Tokyo 2019 / 2020',
+    no_of_housemates: 21,
+    length: 40,
+    dates: 14,
+    couples: 5,
+  };
   try {
-    const seasons = await Seasons.databaseInit();
+    const seasons = await Seasons.addSeason(data);
     console.log(seasons);
   } catch (error) {
     console.log('error');
