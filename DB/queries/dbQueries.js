@@ -14,4 +14,41 @@ const dbInit = async (db) => {
   }
 };
 
-module.exports = { dbInit };
+const dbSeedSeasons = async (db, data) => {
+  try {
+    await db.none(
+      'INSERT INTO seasons(seasonName, lengthOfSeason, housemateCount, dateCount, coupleCount) VALUES($1, $2, $3, $4, $5)',
+      [
+        data[0].name,
+        data[0].lengthOfSeason,
+        data[0].housemateCount,
+        data[0].dateCount,
+        data[0].coupleCount,
+      ]
+    );
+    console.log('test');
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//   try {
+//     data.forEach(async (item) => {
+//       await db.none(
+//         'INSERT INTO seasons(seasonName, lengthOfSeason, housemateCount, dateCount, coupleCount) VALUES(${item.name},${item.lengthOfSeason}, ${item.housemateCount}, ${item.dateCount}, ${item.coupleCount})',
+//         item
+//       );
+//     });
+//   } catch (error) {
+//     console.log('this was bad');
+//   }
+
+// const dbSeedHousemates = async (db, data) => {
+//   try {
+//     await db.none(sql('dbSeed.SQL'));
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+module.exports = { dbInit, dbSeedSeasons };

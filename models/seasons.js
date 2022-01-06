@@ -2,19 +2,7 @@ const db = require('../DB/dbConfig');
 const dbQueries = require('../DB/queries/dbQueries');
 
 class Seasons {
-  constructor(data) {
-    this.name = data.name;
-    this.nickname = data.nickname;
-    this.season = data.season;
-    this.tagline = data.tagline;
-    this.weeksInTheHouse = data.weeksInTheHouse;
-    this.dates = data.dates;
-    this.livedWith = data.livedWith;
-    this.instagramFollowers = data.instagramFollowers;
-    this.ageNow = data.ageNow;
-    this.ageWhenEntered = data.ageWhenEntered;
-    this.imageURL = data.imageURL;
-  }
+  constructor(data) {}
 
   static get all() {
     // TODO Return all seasons.
@@ -25,6 +13,25 @@ class Seasons {
       try {
         console.log('hry');
         const result = dbQueries.dbInit(db);
+        resolve(result);
+      } catch (error) {
+        reject('error');
+      }
+    });
+  }
+  static seedSeasons() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const testData = [
+          {
+            name: 'test',
+            lengthOfSeason: 10,
+            housemateCount: 10,
+            dateCount: 10,
+            coupleCount: 10,
+          },
+        ];
+        const result = dbQueries.dbSeedSeasons(db, testData);
         resolve(result);
       } catch (error) {
         reject('error');

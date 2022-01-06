@@ -6,7 +6,7 @@ CREATE TABLE seasons (
 	seasonId SERIAL PRIMARY KEY,
     seasonName VARCHAR(255),
     coupleCount int,
-    housemsteCount int,
+    housemateCount int,
     dateCount int,
     lengthOfSeason int
 );
@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS housemates;
 CREATE TABLE housemates (
 	housemateId SERIAL PRIMARY KEY,
     housemateName VARCHAR(255),
-    housemateNickname VARCHAR(255),
+    nickname VARCHAR(255),
     housemateTagline VARCHAR(1000),
     weeksInHouse int,
     livedWith int,
