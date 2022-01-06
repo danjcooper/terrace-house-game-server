@@ -1,0 +1,46 @@
+-- DROP TABLE IF EXISTS catagories cascade;
+DROP TABLE IF EXISTS categories cascade;
+DROP TABLE IF EXISTS seasons cascade;
+
+CREATE TABLE seasons (
+	seasonId SERIAL PRIMARY KEY,
+    seasonName VARCHAR(255),
+    coupleCount int,
+    housemsteCount int,
+    dateCount int,
+    lengthOfSeason int
+);
+
+
+DROP TABLE IF EXISTS tags;
+DROP TABLE IF EXISTS housemates;
+
+CREATE TABLE housemates (
+	housemateId SERIAL PRIMARY KEY,
+    housemateName VARCHAR(255),
+    housemateNickname VARCHAR(255),
+    housemateTagline VARCHAR(1000),
+    weeksInHouse int,
+    livedWith int,
+    dates int,
+    instagramFollowers int,
+    ageNow int,
+    ageWhenEntered int,
+    imageURL VARCHAR(2555),
+    seasonId int,
+    FOREIGN KEY (seasonId) REFERENCES seasons(seasonId) 
+
+);
+
+
+
+-- How to use forign key
+-- DROP TABLE IF EXISTS tags;
+
+-- CREATE TABLE tags (
+-- 	tagId SERIAL PRIMARY KEY,
+--     tagName VARCHAR(255),
+--     categoryId int,
+--     FOREIGN KEY (categoryId) REFERENCES categories(categoryId) 
+
+-- );

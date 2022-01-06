@@ -1,21 +1,20 @@
 require('dotenv').config();
+// const { join: joinPath } = require('path');
+const pgp = require('pg-promise')();
+// const dbQueries = require('./queries/dbQueries');
 
-const knex = require('knex')({
-  client: 'pg',
-  version: '13.4',
-  connection: {
-    host: process.env.PGHOST,
-    port: process.env.PGPORT,
-    user: process.env.PGUSER,
-    password: process.env.PGPASSWORD,
-    database: process.env.PGDATABASE,
-    ssl: { rejectUnauthorized: false },
-  },
-});
+let ssl = { rejectUnauthorized: false };
 
-// const knex = require('knex')({
-//   client: 'pg',
-//   connection: process.env.PG_CONNECTION_STRING,
-// });
+const config = {
+  connectionString: process.env.DB_URI,
+  max: 30,
+  ssl: ssl,
+};
 
-module.exports = knex;
+// const db = pgp(config);
+// console.log(db);
+
+// dbQueries.dbInit();
+// dbQueries.dbSeed();
+
+module.exports = pgp(config);
