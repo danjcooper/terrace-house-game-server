@@ -28,4 +28,29 @@ const getSeasonData = () => {
   });
 };
 
-module.exports = getSeasonData;
+const getHousemateData = () => {
+  return new Promise((resolve, reject) => {
+    try {
+      fs.createReadStream(path.resolve(__dirname, 'Housemates.csv'))
+        .pipe(csv())
+        .on('data', (data) => {
+          // Update strings to ints for database schema.
+          for (const key in data) {
+            if (data[key] == parseInt(data[key])) {
+              data[key] = parseInt(data[key]);
+            }
+          }
+
+          results.push(data);
+        })
+        .on('end', () => {
+          console.log(results);
+          resolve(results);
+        });
+    } catch (error) {
+      reject('error');
+    }
+  });
+};
+
+module.exports = { getSeasonData, getHousemateData };

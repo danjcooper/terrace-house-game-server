@@ -9,6 +9,9 @@ const port = 3000;
 const seasonsRoutes = require('./routes/seasons');
 app.use('/seasons', seasonsRoutes);
 
+const housematesRoutes = require('./routes/housemates');
+app.use('/housemates', housematesRoutes);
+
 // app.get('/:season', async (req, res) => {
 //   const data = {
 //     name: 'Tokyo 2019 / 2020',

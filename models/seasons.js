@@ -23,7 +23,7 @@ class Seasons {
   static seedSeasons() {
     return new Promise(async (resolve, reject) => {
       try {
-        const testData = await getSeasonData();
+        const testData = await getSeasonData.getSeasonData();
         const result = dbQueries.dbSeedSeasons(db, testData);
         resolve(result);
       } catch (error) {
