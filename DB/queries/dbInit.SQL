@@ -1,5 +1,3 @@
--- DROP TABLE IF EXISTS catagories cascade;
-DROP TABLE IF EXISTS categories cascade;
 DROP TABLE IF EXISTS seasons cascade;
 
 CREATE TABLE seasons (
@@ -11,8 +9,6 @@ CREATE TABLE seasons (
     lengthOfSeason int
 );
 
-
-DROP TABLE IF EXISTS tags;
 DROP TABLE IF EXISTS housemates;
 
 CREATE TABLE housemates (
@@ -31,16 +27,3 @@ CREATE TABLE housemates (
     FOREIGN KEY (seasonId) REFERENCES seasons(seasonId) 
 
 );
-
-
-
--- How to use forign key
--- DROP TABLE IF EXISTS tags;
-
--- CREATE TABLE tags (
--- 	tagId SERIAL PRIMARY KEY,
---     tagName VARCHAR(255),
---     categoryId int,
---     FOREIGN KEY (categoryId) REFERENCES categories(categoryId) 
-
--- );

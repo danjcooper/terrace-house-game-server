@@ -32,4 +32,22 @@ const dbSeedSeasons = async (db, data) => {
     });
 };
 
-module.exports = { dbInit, dbSeedSeasons };
+const dbSeedHousemates = (db, data) => {
+  db.tx((t) => {
+    const queries = data.map((l) => {
+      return t.none(
+        'INSERT INTO housemates(housemateName, nickname, season, weeksInHouse, livedWith, dates, instagramFollowers, ageNow, ageWhenEntered, housemateTagline, imageURL) VALUES(${housemateName}, ${nickname}, (SELECT seasonId from seasons WHERE seasonName=${season}) , ${weeksInHouse}, ${livedWith}, ${dates}, ${instagramFollowers}, ${ageNow}, ${ageWhenEntered}, ${housemateTagline}, ${imageURL})',
+        l
+      );
+    });
+    return t.batch(queries);
+  })
+    .then((data) => {
+      console.log('Data was successfully added to the database.');
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+module.exports = { dbInit, dbSeedSeasons, dbSeedHousemates };
