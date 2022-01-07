@@ -44,7 +44,6 @@ const getHousemateData = () => {
           results.push(data);
         })
         .on('end', () => {
-          console.log(results);
           resolve(results);
         });
     } catch (error) {
