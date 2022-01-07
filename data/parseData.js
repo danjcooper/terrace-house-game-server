@@ -10,11 +10,13 @@ const getSeasonData = () => {
       fs.createReadStream(path.resolve(__dirname, 'SEASONS.csv'))
         .pipe(csv())
         .on('data', (data) => {
+          // Update strings to ints for database schema.
           for (const key in data) {
             if (data[key] == parseInt(data[key])) {
               data[key] = parseInt(data[key]);
             }
           }
+
           results.push(data);
         })
         .on('end', () => {
