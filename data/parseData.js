@@ -1,4 +1,3 @@
-const { rejects } = require('assert');
 const csv = require('csv-parser');
 const fs = require('fs');
 var path = require('path');
@@ -40,7 +39,6 @@ const getHousemateData = () => {
               data[key] = parseInt(data[key]);
             }
           }
-
           results.push(data);
         })
         .on('end', () => {
