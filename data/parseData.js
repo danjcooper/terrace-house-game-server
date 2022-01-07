@@ -1,0 +1,29 @@
+const { rejects } = require('assert');
+const csv = require('csv-parser');
+const fs = require('fs');
+var path = require('path');
+const results = [];
+
+const getSeasonData = () => {
+  return new Promise((resolve, reject) => {
+    try {
+      fs.createReadStream(path.resolve(__dirname, 'SEASONS.csv'))
+        .pipe(csv())
+        .on('data', (data) => {
+          for (const key in data) {
+            if (data[key] == parseInt(data[key])) {
+              data[key] = parseInt(data[key]);
+            }
+          }
+          results.push(data);
+        })
+        .on('end', () => {
+          resolve(results);
+        });
+    } catch (error) {
+      reject('error');
+    }
+  });
+};
+
+module.exports = getSeasonData;
