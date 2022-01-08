@@ -50,4 +50,30 @@ const dbSeedHousemates = (db, data) => {
     });
 };
 
-module.exports = { dbInit, dbSeedSeasons, dbSeedHousemates };
+const getAllHousemates = async (db) => {
+  const result = await db.any(`SELECT * FROM housemates`);
+  return result;
+};
+
+const getAllSeasons = async (db) => {
+  const result = await db.any(`SELECT * FROM seasons`);
+  return result;
+};
+
+const getSeasonHousemates = async (db, season) => {
+  const result = await db.any(
+    `SELECT * FROM housemates INNER JOIN seasons ON housemates.seasonId=seasons.seasonId
+  AND seasons.seasonname = $1;`,
+    season
+  );
+  return result;
+};
+
+module.exports = {
+  dbInit,
+  dbSeedSeasons,
+  dbSeedHousemates,
+  getAllHousemates,
+  getAllSeasons,
+  getSeasonHousemates,
+};

@@ -5,6 +5,14 @@ const getData = require('../data/parseData');
 class Housemates {
   constructor(data) {}
   static get all() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const data = await dbQueries.getAllHousemates(db);
+        resolve(data);
+      } catch (error) {
+        reject(error);
+      }
+    });
     return;
   }
   static seedHousemates() {

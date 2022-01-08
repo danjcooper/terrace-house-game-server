@@ -6,7 +6,25 @@ class Seasons {
   constructor(data) {}
 
   static get all() {
-    // TODO Return all seasons.
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = dbQueries.getAllSeasons(db);
+        resolve(result);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  static getSeasonHousemates(season) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await dbQueries.getSeasonHousemates(db, season);
+        resolve(result);
+      } catch (error) {
+        reject(error);
+      }
+    });
   }
 
   static initDatabase() {
