@@ -2,29 +2,23 @@ const Seasons = require('../models/seasons');
 const helpers = require('../helpers');
 require('dotenv').config();
 
+// TODO refactor the DB services to their own route so the public don't have access
+
 const index = async (req, res) => {
-  if (process.env.ENVIRONMENT !== 'DEV') {
-    res.status(200).send('This function is not currently available');
-  } else {
-    try {
-      await Seasons.initDatabase();
-      res.status(200).send('init');
-    } catch (error) {
-      res.status(500).send('oops');
-    }
+  try {
+    await Seasons.initDatabase();
+    res.status(200).send('init');
+  } catch (error) {
+    res.status(500).send('oops');
   }
 };
 
 const seedSeasons = async (req, res) => {
-  if (process.env.ENVIRONMENT !== 'DEV') {
-    res.status(200).send('This function is not currently available');
-  } else {
-    try {
-      await Seasons.seedSeasons();
-      res.status(200).send('seasons seeded');
-    } catch (error) {
-      res.status(500).send('oops');
-    }
+  try {
+    await Seasons.seedSeasons();
+    res.status(200).send('seasons seeded');
+  } catch (error) {
+    res.status(500).send('oops');
   }
 };
 

@@ -25,3 +25,5 @@ The API is hosted [here](https://terrace-house-server.herokuapp.com/).
 | Aloha State              | baseurl/seasons/**AS**     |
 | Opening New Doors        | baseurl/seasons/**OND**    |
 | Tokyo 2019/2020          | baseurl/seasons/**T1920**  |
+
+###
