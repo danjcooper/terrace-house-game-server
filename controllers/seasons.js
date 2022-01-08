@@ -5,26 +5,26 @@ require('dotenv').config();
 const index = async (req, res) => {
   if (process.env.ENVIRONMENT !== 'DEV') {
     res.status(200).send('This function is not currently available');
-  }
-
-  try {
-    await Seasons.initDatabase();
-    res.status(200).send('init');
-  } catch (error) {
-    res.status(500).send('oops');
+  } else {
+    try {
+      await Seasons.initDatabase();
+      res.status(200).send('init');
+    } catch (error) {
+      res.status(500).send('oops');
+    }
   }
 };
 
 const seedSeasons = async (req, res) => {
   if (process.env.ENVIRONMENT !== 'DEV') {
     res.status(200).send('This function is not currently available');
-  }
-
-  try {
-    await Seasons.seedSeasons();
-    res.status(200).send('seasons seeded');
-  } catch (error) {
-    res.status(500).send('oops');
+  } else {
+    try {
+      await Seasons.seedSeasons();
+      res.status(200).send('seasons seeded');
+    } catch (error) {
+      res.status(500).send('oops');
+    }
   }
 };
 
