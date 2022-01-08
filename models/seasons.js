@@ -1,6 +1,6 @@
 const db = require('../DB/dbConfig');
 const dbQueries = require('../DB/queries/dbQueries');
-const getSeasonData = require('../data/parseData');
+const getData = require('../data/parseData');
 
 class Seasons {
   constructor(data) {}
@@ -23,7 +23,7 @@ class Seasons {
   static seedSeasons() {
     return new Promise(async (resolve, reject) => {
       try {
-        const testData = await getSeasonData.getSeasonData();
+        const testData = await getData.getSeasonData();
         const result = dbQueries.dbSeedSeasons(db, testData);
         resolve(result);
       } catch (error) {
