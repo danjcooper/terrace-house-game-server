@@ -33,6 +33,7 @@ const dbSeedSeasons = async (db, data) => {
 };
 
 const dbSeedHousemates = (db, data) => {
+  console.log(data);
   db.tx((t) => {
     const queries = data.map((l) => {
       return t.none(

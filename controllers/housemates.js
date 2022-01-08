@@ -1,6 +1,10 @@
 const Housemates = require('../models/housemates');
 
 const seedHousemates = async (req, res) => {
+  if (process.env.ENVIRONMENT !== 'DEV') {
+    res.status(200).send('This function is not currently available');
+  }
+
   try {
     await Housemates.seedHousemates();
     res.status(200).send('seasons seeded');
