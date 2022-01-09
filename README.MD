@@ -51,3 +51,10 @@ The API is hosted [here](https://terrace-house-server.herokuapp.com/).
         {}
     ]
 ```
+
+## Environment Variables.
+
+```
+ENVIRONMENT=DEV
+DATABASE_URL=
+```
