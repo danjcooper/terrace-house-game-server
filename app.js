@@ -7,6 +7,10 @@ app.use(cors());
 
 const port = process.env.PORT || 3000;
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Terrace House API');
+});
+
 const seasonsRoutes = require('./routes/seasons');
 app.use('/seasons', seasonsRoutes);
 
