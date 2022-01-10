@@ -1,9 +1,9 @@
 const csv = require('csv-parser');
 const fs = require('fs');
 var path = require('path');
-const results = [];
 
 const getSeasonData = () => {
+  const results = [];
   return new Promise((resolve, reject) => {
     try {
       fs.createReadStream(path.resolve(__dirname, 'SEASONS.csv'))
@@ -28,6 +28,7 @@ const getSeasonData = () => {
 };
 
 const getHousemateData = () => {
+  const results = [];
   return new Promise((resolve, reject) => {
     try {
       fs.createReadStream(path.resolve(__dirname, 'Housemates.csv'))
