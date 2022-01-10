@@ -3,6 +3,6 @@ const router = express.Router();
 
 const housematesController = require('../controllers/housemates');
 
-router.get('/all', housematesController.getAllHousemates);
+router.get('/', housematesController.getAllHousemates);
 
 module.exports = router;
