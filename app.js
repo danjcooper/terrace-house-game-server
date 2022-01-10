@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+require('dotenv').config();
 
 app.use(cors());
 
@@ -13,7 +14,7 @@ const housematesRoutes = require('./routes/housemates');
 app.use('/housemates', housematesRoutes);
 
 const databaseRoutes = require('./routes/database');
-app.use('/db', databaseRoutes);
+process.env.ENVIRONMENT === 'DEV' ? app.use('/db', databaseRoutes) : null;
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
