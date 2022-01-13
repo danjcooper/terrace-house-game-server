@@ -11,15 +11,4 @@ const getAllSeasons = async (req, res) => {
   }
 };
 
-const getSeasonHousemates = async (req, res) => {
-  try {
-    const season = helpers.convertSeasonCode(req.params.season);
-    const result = await Seasons.getSeasonHousemates(season);
-    res.status(200).send(result);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send('oops');
-  }
-};
-
-module.exports = { getAllSeasons, getSeasonHousemates };
+module.exports = { getAllSeasons };

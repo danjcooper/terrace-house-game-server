@@ -16,17 +16,6 @@ class Seasons {
     });
   }
 
-  static getSeasonHousemates(season) {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const result = await dbQueries.getSeasonHousemates(db, season);
-        resolve(result);
-      } catch (error) {
-        reject(error);
-      }
-    });
-  }
-
   static initDatabase() {
     return new Promise(async (resolve, reject) => {
       try {
