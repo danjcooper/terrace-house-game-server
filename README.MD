@@ -37,12 +37,12 @@ The API is hosted [here](https://terrace-house-server.herokuapp.com/).
         {}
     ]
 
-    // /seasons/:season
+    // /housemates
     [
         {}
     ]
 
-    // /housemates/all
+    // /housemates/:season
     [
         {}
     ]
