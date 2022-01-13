@@ -13,7 +13,6 @@ class Housemates {
         reject(error);
       }
     });
-    return;
   }
   static seedHousemates() {
     return new Promise(async (resolve, reject) => {
