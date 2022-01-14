@@ -62,6 +62,7 @@ const getAllSeasons = async (db) => {
 };
 
 const getSeasonHousemates = async (db, season) => {
+  //TODO Update to work with an array.
   const result = await db.any(
     `SELECT * FROM housemates INNER JOIN seasons ON housemates.seasonId=seasons.seasonId
   AND seasons.seasonname = $1;`,

@@ -18,16 +18,16 @@ The API is hosted [here](https://terrace-house-server.herokuapp.com/).
 
 ### Season Parameters.
 
-| Season                   | Parameter to use       |
-| ------------------------ | ---------------------- |
-| All Seasons              | /housemates            |
-| Boys & Girls Next Door   | /housemates/**B&GND**  |
-| Closing Door             | /housemates/**CD**     |
-| Boys & Girls in the City | /housemates/**B&GITC** |
-| Aloha State              | /housemates/**AS**     |
-| Opening New Doors        | /housemates/**OND**    |
-| Tokyo 2019/2020          | /housemates/**T1920**  |
-| Multiple Seasons         | TBC                    |
+| Season                                          | Parameter to use       |
+| ----------------------------------------------- | ---------------------- |
+| All Seasons                                     | /housemates            |
+| Boys & Girls Next Door                          | /housemates/**B&GND**  |
+| Closing Door                                    | /housemates/**CD**     |
+| Boys & Girls in the City                        | /housemates/**B&GITC** |
+| Aloha State                                     | /housemates/**AS**     |
+| Opening New Doors                               | /housemates/**OND**    |
+| Tokyo 2019/2020                                 | /housemates/**T1920**  |
+| Multiple Seasons (As above, separated with '%') | /housemates/OND%CD%AS  |
 
 ### Response Structures.
 

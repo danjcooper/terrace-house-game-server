@@ -25,4 +25,8 @@ const convertSeasonCode = (seasonCode) => {
   }
 };
 
-module.exports = { convertSeasonCode };
+const parseMultiSeasonString = (multiSeasonString) => {
+  return multiSeasonString.toUpperCase().split('%');
+};
+
+module.exports = { convertSeasonCode, parseMultiSeasonString };
