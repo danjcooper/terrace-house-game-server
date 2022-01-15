@@ -102,8 +102,6 @@ const getSeasonEffects = async (db, seasons) => {
   }
   query += ';';
 
-  console.log(query);
-
   const result = await db.any(query, seasons);
   return result;
 };
