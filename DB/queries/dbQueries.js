@@ -61,6 +61,17 @@ const getAllSeasons = async (db) => {
   return result;
 };
 
+const getAllEffects = async (db) => {
+  const result = await db.any(`SELECT * FROM effects`);
+  return result;
+};
+
+const getSeasonEffects = async (db, seasons) => {
+  //TODO
+  const result = await db.any(`SELECT * FROM effects`);
+  return result;
+};
+
 const getSeasonHousemates = async (db, seasons) => {
   //TODO Update to work with an array.
   // create a string with the appropriate amount of conditions while maintaining the input sanitation
@@ -92,4 +103,5 @@ module.exports = {
   getAllHousemates,
   getAllSeasons,
   getSeasonHousemates,
+  getAllEffects,
 };

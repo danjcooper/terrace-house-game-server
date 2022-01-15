@@ -51,4 +51,28 @@ const getHousemateData = () => {
   });
 };
 
-module.exports = { getSeasonData, getHousemateData };
+const getEffectsData = () => {
+  const results = [];
+  return new Promise((resolve, reject) => {
+    try {
+      fs.createReadStream(path.resolve(__dirname, 'EFFECTS.csv'))
+        .pipe(csv())
+        .on('data', (data) => {
+          // Update strings to ints for database schema.
+          for (const key in data) {
+            if (data[key] == parseInt(data[key])) {
+              data[key] = parseInt(data[key]);
+            }
+          }
+          results.push(data);
+        })
+        .on('end', () => {
+          resolve(results);
+        });
+    } catch (error) {
+      reject('error');
+    }
+  });
+};
+
+module.exports = { getSeasonData, getHousemateData, getEffectsData };
