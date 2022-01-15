@@ -7,29 +7,34 @@ The API is hosted [here](https://terrace-house-server.herokuapp.com/).
 
 ## Routes.
 
-| Method | Route                   | Description                                                                                                                                         |
-| ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GET    | /housemates             | Returns an array of all housemates with stats for each                                                                                              |
-| GET    | /seasons                | Returns an array of seasons with stats for each in [this format]().                                                                                 |
-| GET    | /housemates/:season     | returns all the housemate data for a certain season in [this format](). Parameters should be pass based on [this naming convention]().              |
-| GET    | /database/buildDatabase | Builds/rebuilds the database and with any updated data in the CSV. NB. This is not available on Prod or without the relevant environment variables. |
+| Method | Route                   | Description                                                                                                                                          |
+| ------ | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | /housemates             | Returns an array of all housemates with stats for each                                                                                               |
+| GET    | /seasons                | Returns an array of seasons with stats for each in [this format]().                                                                                  |
+| GET    | /housemates/:season     | returns all the housemate data for a certain season in [this format](). Parameters should be pass based on [this naming convention]().               |
+| GET    | /database/buildDatabase | Builds/rebuilds the database and with any updated data in the CSV. N.B. This is not available on Prod or without the relevant environment variables. |
 
 ## Data Formats.
 
 ### Season Codes.
 
 When using the API the below codes are used for each season.
+The base url for each route will return the data for all seasons. <br/>
+For example: <br/>
+`http://baseurl/housemates` returns all housemates. <br/>
+`http://baseurl/housemates/OND` returns only housemates from Opening New Doors. <br/>
+`http://baseurl/housemates/OND+AS` returns housemates from Opening New Doors & Aloha State. <br/>
+This formatting is used on all routes.
 
-| Season                                          | Parameter to use                 |
-| ----------------------------------------------- | -------------------------------- |
-| All Seasons                                     | Base URL e.g. baseURL/housemates |
-| Boys & Girls Next Door                          | url/**B&GND**                    |
-| Closing Door                                    | url/**CD**                       |
-| Boys & Girls in the City                        | url/**B&GITC**                   |
-| Aloha State                                     | url/**AS**                       |
-| Opening New Doors                               | url/**OND**                      |
-| Tokyo 2019/2020                                 | url/**T1920**                    |
-| Multiple Seasons (As above, separated with '+') | url/OND+CD+AS                    |
+| Season                                          | Parameter to use |
+| ----------------------------------------------- | ---------------- |
+| Boys & Girls Next Door                          | **B&GND**        |
+| Closing Door                                    | **CD**           |
+| Boys & Girls in the City                        | **B&GITC**       |
+| Aloha State                                     | **AS**           |
+| Opening New Doors                               | **OND**          |
+| Tokyo 2019/2020                                 | **T1920**        |
+| Multiple Seasons (As above, separated with '+') | **OND+CD+AS**    |
 
 ### Response Structures.
 
