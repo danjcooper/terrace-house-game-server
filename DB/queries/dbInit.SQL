@@ -27,3 +27,17 @@ CREATE TABLE housemates (
     FOREIGN KEY (seasonId) REFERENCES seasons(seasonId) 
 
 );
+
+DROP TABLE IF EXISTS effects;
+
+CREATE TABLE effects (
+	effectId SERIAL PRIMARY KEY,
+    housemate VARCHAR(255),
+    positive BOOLEAN,
+    special BOOLEAN,
+    description VARCHAR(2555),
+    imageURL VARCHAR(2555),
+    seasonId int,
+    FOREIGN KEY (seasonId) REFERENCES seasons(seasonId) 
+
+);
