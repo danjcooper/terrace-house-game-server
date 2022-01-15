@@ -27,7 +27,7 @@ The API is hosted [here](https://terrace-house-server.herokuapp.com/).
 | Aloha State                                     | /housemates/**AS**     |
 | Opening New Doors                               | /housemates/**OND**    |
 | Tokyo 2019/2020                                 | /housemates/**T1920**  |
-| Multiple Seasons (As above, separated with '%') | /housemates/OND%CD%AS  |
+| Multiple Seasons (As above, separated with '+') | /housemates/OND+CD+AS  |
 
 ### Response Structures.
 

@@ -61,13 +61,27 @@ const getAllSeasons = async (db) => {
   return result;
 };
 
-const getSeasonHousemates = async (db, season) => {
+const getSeasonHousemates = async (db, seasons) => {
   //TODO Update to work with an array.
-  const result = await db.any(
-    `SELECT * FROM housemates INNER JOIN seasons ON housemates.seasonId=seasons.seasonId
-  AND seasons.seasonname = $1;`,
-    season
-  );
+  // create a string with the appropriate amount of conditions while maintaining the input sanitation
+  // add the the query ${seasons[0]}
+  // Pass seasons array as second argument
+
+  let query =
+    'SELECT * FROM housemates INNER JOIN seasons ON housemates.seasonId=seasons.seasonId WHERE ';
+
+  for (let i = 0; i < seasons.length; i++) {
+    query += `seasons.seasonname = '${seasons[i]}' `;
+    // Don't add an or to the last query
+    if (i !== seasons.length - 1) {
+      query += 'OR ';
+    }
+  }
+  query += ';';
+
+  console.log(query);
+
+  const result = await db.any(query, seasons);
   return result;
 };
 

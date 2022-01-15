@@ -3,30 +3,30 @@ const convertSeasonCode = (seasonCode) => {
 
   switch (seasonCode) {
     case 'B&GND':
-      return 'Boys & Girls Next Door';
+      return ['Boys & Girls Next Door'];
 
     case 'CD':
-      return 'Closing Door';
+      return ['Closing Door'];
 
     case 'B&GITC':
-      return 'Boys & Girls in the City';
+      return ['Boys & Girls in the City'];
 
     case 'AS':
-      return 'Aloha State';
+      return ['Aloha State'];
 
     case 'OND':
-      return 'Opening New Doors';
+      return ['Opening New Doors'];
 
     case 'T1920':
-      return 'Tokyo 19/20';
+      return ['Tokyo 19/20'];
 
     default:
-      return 'Season Not Found';
+      return ['Season Not Found'];
   }
 };
 
 const parseMultiSeasonString = (multiSeasonString) => {
-  return multiSeasonString.toUpperCase().split('%');
+  return multiSeasonString.toUpperCase().split('+');
 };
 
 module.exports = { convertSeasonCode, parseMultiSeasonString };
