@@ -61,7 +61,12 @@ const getEffectsData = () => {
           // Update strings to ints for database schema.
           for (const key in data) {
             if (data[key] == parseInt(data[key])) {
+              // the value is a int.
               data[key] = parseInt(data[key]);
+            } else if (data[key] === 'TRUE') {
+              data[key] = true;
+            } else if (data[key] === 'FALSE') {
+              data[key] = false;
             }
           }
           results.push(data);

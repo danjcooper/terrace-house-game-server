@@ -18,7 +18,7 @@ class Effects {
   static getEffectsBySeason(season) {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await dbQueries.getSeasonHousemates(db, season);
+        const result = await dbQueries.getSeasonEffects(db, season);
         resolve(result);
       } catch (error) {
         reject(error);
