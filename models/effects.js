@@ -30,6 +30,7 @@ class Effects {
     return new Promise(async (resolve, reject) => {
       try {
         const data = await getData.getEffectsData();
+        // console.log(data);
         const result = dbQueries.dbSeedEffects(db, data);
         resolve(result);
       } catch (error) {

@@ -1,5 +1,6 @@
 const Seasons = require('../models/seasons');
 const Housemates = require('../models/housemates');
+const Effects = require('../models/effects');
 
 const index = async (req, res) => {
   try {
@@ -14,6 +15,7 @@ const buildDatabase = async (req, res) => {
     await Seasons.initDatabase();
     await Seasons.seedSeasons();
     await Housemates.seedHousemates();
+    await Effects.seedEffects();
     res.status(200).send('seasons seeded');
   } catch (error) {
     res.status(500).send('oops');

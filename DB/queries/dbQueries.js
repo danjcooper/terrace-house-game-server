@@ -51,6 +51,25 @@ const dbSeedHousemates = (db, data) => {
     });
 };
 
+const dbSeedEffects = (db, data) => {
+  console.log(data);
+  db.tx((t) => {
+    const queries = data.map((l) => {
+      return t.none(
+        'INSERT INTO effects(housemate, seasonId, positive, special, description, imageURL) VALUES(${housemate}, (SELECT seasonId from seasons WHERE seasonName=${season}) , ${positive}, ${special}, ${description}, ${imageURL});',
+        l
+      );
+    });
+    return t.batch(queries);
+  })
+    .then((data) => {
+      console.log('Data was successfully added to the database.');
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 const getAllHousemates = async (db) => {
   const result = await db.any(`SELECT * FROM housemates`);
   return result;
@@ -67,13 +86,29 @@ const getAllEffects = async (db) => {
 };
 
 const getSeasonEffects = async (db, seasons) => {
-  //TODO
-  const result = await db.any(`SELECT * FROM effects`);
+  // create a string with the appropriate amount of conditions while maintaining the input sanitation
+  // add the the query ${seasons[0]}
+  // Pass seasons array as second argument
+
+  let query =
+    'SELECT housemate, positive, special, description, imageurl, seasonname FROM effects INNER JOIN seasons ON effects.seasonId=seasons.seasonId WHERE ';
+
+  for (let i = 0; i < seasons.length; i++) {
+    query += `seasons.seasonname = '${seasons[i]}' `;
+    // Don't add an or to the last query
+    if (i !== seasons.length - 1) {
+      query += 'OR ';
+    }
+  }
+  query += ';';
+
+  console.log(query);
+
+  const result = await db.any(query, seasons);
   return result;
 };
 
 const getSeasonHousemates = async (db, seasons) => {
-  //TODO Update to work with an array.
   // create a string with the appropriate amount of conditions while maintaining the input sanitation
   // add the the query ${seasons[0]}
   // Pass seasons array as second argument
@@ -100,8 +135,10 @@ module.exports = {
   dbInit,
   dbSeedSeasons,
   dbSeedHousemates,
+  dbSeedEffects,
   getAllHousemates,
   getAllSeasons,
   getSeasonHousemates,
   getAllEffects,
+  getSeasonEffects,
 };

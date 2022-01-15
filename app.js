@@ -17,6 +17,9 @@ app.use('/seasons', seasonsRoutes);
 const housematesRoutes = require('./routes/housemates');
 app.use('/housemates', housematesRoutes);
 
+const effectsRoutes = require('./routes/effects');
+app.use('/effects', effectsRoutes);
+
 const databaseRoutes = require('./routes/database');
 process.env.ENVIRONMENT === 'DEV' ? app.use('/db', databaseRoutes) : null;
 
