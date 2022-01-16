@@ -18,7 +18,7 @@ class Housemates {
   static getHousematesBySeason(season) {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await dbQueries.getSeasonHousemates(db, season);
+        const result = await dbQueries.getHousematesBySeason(db, season);
         resolve(result);
       } catch (error) {
         reject(error);

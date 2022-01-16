@@ -85,7 +85,7 @@ const getAllEffects = async (db) => {
   return result;
 };
 
-const getSeasonEffects = async (db, seasons) => {
+const getEffectsBySeason = async (db, seasons) => {
   // create a string with the appropriate amount of conditions while maintaining the input sanitation
   // add the the query ${seasons[0]}
   // Pass seasons array as second argument
@@ -106,7 +106,7 @@ const getSeasonEffects = async (db, seasons) => {
   return result;
 };
 
-const getSeasonHousemates = async (db, seasons) => {
+const getHousematesBySeason = async (db, seasons) => {
   // create a string with the appropriate amount of conditions while maintaining the input sanitation
   // add the the query ${seasons[0]}
   // Pass seasons array as second argument
@@ -136,7 +136,7 @@ module.exports = {
   dbSeedEffects,
   getAllHousemates,
   getAllSeasons,
-  getSeasonHousemates,
+  getHousematesBySeason,
   getAllEffects,
-  getSeasonEffects,
+  getEffectsBySeason,
 };
