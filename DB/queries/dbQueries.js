@@ -112,7 +112,7 @@ const getSeasonHousemates = async (db, seasons) => {
   // Pass seasons array as second argument
 
   let query =
-    'SELECT * FROM housemates INNER JOIN seasons ON housemates.seasonId=seasons.seasonId WHERE ';
+    'SELECT housematename, nickname, housematetagline, weeksinhouse, livedwith, dates, instagramfollowers, agenow, agewhenentered, imageurl, seasonname FROM housemates INNER JOIN seasons ON housemates.seasonId=seasons.seasonId WHERE ';
 
   for (let i = 0; i < seasons.length; i++) {
     query += `seasons.seasonname = '${seasons[i]}' `;
