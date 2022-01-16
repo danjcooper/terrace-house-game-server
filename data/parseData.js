@@ -38,6 +38,8 @@ const getHousemateData = () => {
           for (const key in data) {
             if (data[key] == parseInt(data[key])) {
               data[key] = parseInt(data[key]);
+            } else if (data[key] === '') {
+              data[key] = null;
             }
           }
           results.push(data);
