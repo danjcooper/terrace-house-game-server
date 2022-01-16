@@ -38,26 +38,59 @@ This formatting is used on all routes.
 
 ### Response Structures.
 
-```JSON
-    // /seasons
-    [
-        {}
-    ]
-
-    // /housemates
-    [
-        {}
-    ]
-
-    // /housemates/:season
-    [
-        {}
-    ]
-
-    // /housemates/:id
-    [
-        {}
-    ]
+```javascript
+// /seasons
+[
+  {
+    seasonid: int,
+    seasonname: string,
+    couplecount: int,
+    housematecount: int,
+    datecount: int,
+    lengthofseason: int,
+  }
+][
+  // /housemates
+  {
+    housemateid: int,
+    housematename: string,
+    nickname: string / null,
+    housematetagline: string,
+    weeksinhouse: int,
+    livedwith: int,
+    dates: int,
+    instagramfollowers: int,
+    agenow: int,
+    agewhenentered: int,
+    imageurl: string,
+    seasonid: int
+  }
+][
+  // /housemates/:season
+  {
+    housematename: string,
+    nickname: string / null,
+    housematetagline: string,
+    weeksinhouse: int,
+    livedwith: int,
+    dates: int,
+    instagramfollowers: int,
+    agenow: int,
+    agewhenentered: int,
+    imageurl: string,
+    seasonname: string
+  }
+][
+  // effects/:season
+    {
+    housemate: string,
+    positive: boolean,
+    special: boolean,
+    description: string,
+    imageurl: string,
+    seasonname: string
+  },
+];
 ```
 
 ## Environment Variables.
