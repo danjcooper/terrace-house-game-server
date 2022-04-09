@@ -10,7 +10,7 @@ class Seasons {
         this.totalHousemates = data.housematecount;
         this.totalDates = data.datecount;
         this.seasonLength = data.lengthofseason;
-        this.seasonCode = data;
+        this.seasonCode = data.seasoncode;
     }
 
     static create(data) {
