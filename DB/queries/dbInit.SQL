@@ -6,7 +6,8 @@ CREATE TABLE seasons (
     coupleCount int,
     housemateCount int,
     dateCount int,
-    lengthOfSeason int
+    lengthOfSeason int,
+    seasonCode VARCHAR(255)
 );
 
 DROP TABLE IF EXISTS housemates;

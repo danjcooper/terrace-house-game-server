@@ -1,14 +1,15 @@
 const db = require('../DB/dbConfig');
 
 const initDatabase = async () => {
-  console.log('Creating database...');
+    console.log('Creating database...');
 
-  try {
-    await db.none(`DROP TABLE IF EXISTS seasons cascade;
+    try {
+        await db.any(`DROP TABLE IF EXISTS seasons cascade;
 
     CREATE TABLE seasons (
         seasonId SERIAL PRIMARY KEY,
         seasonName VARCHAR(255),
+        seasonCode VARCHAR(255),
         coupleCount int,
         housemateCount int,
         dateCount int,
@@ -34,10 +35,10 @@ const initDatabase = async () => {
     
     );`);
 
-    console.log('Database successfully created.');
-  } catch (error) {
-    console.log('There was an error creating the database.');
-  }
+        console.log('Database successfully created.');
+    } catch (error) {
+        console.log('There was an error creating the database.');
+    }
 };
 
 initDatabase();
