@@ -42,3 +42,11 @@ CREATE TABLE effects (
     FOREIGN KEY (seasonId) REFERENCES seasons(seasonId) 
 
 );
+
+DROP TABLE IF EXISTS leaderboard;
+
+CREATE TABLE leaderboard (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255),
+    score INT
+);

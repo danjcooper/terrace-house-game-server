@@ -8,7 +8,7 @@ app.use(cors());
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.send('Konbanwa. Welcome to the Terrace House API');
+    res.send('Konbanwa. Welcome to the Terrace House API');
 });
 
 const seasonsRoutes = require('./routes/seasons');
@@ -20,13 +20,16 @@ app.use('/housemates', housematesRoutes);
 const effectsRoutes = require('./routes/effects');
 app.use('/effects', effectsRoutes);
 
+const leaderboardRoutes = require('./routes/leaderboard');
+app.use('/leaderboard', leaderboardRoutes);
+
 const databaseRoutes = require('./routes/database');
 process.env.ENVIRONMENT === 'DEV' ? app.use('/db', databaseRoutes) : null;
 
 app.get('*', function (req, res) {
-  res.status(404).send('Not Found.');
+    res.status(404).send('Not Found.');
 });
 
 app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
+    console.log(`Listening at http://localhost:${port}`);
 });

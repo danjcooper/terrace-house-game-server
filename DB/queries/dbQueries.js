@@ -130,6 +130,16 @@ const getHousematesBySeason = async (db, seasons) => {
     return result;
 };
 
+const getAllLeaderboard = async db => {
+    const result = await db.any(`SELECT * FROM leaderboard`);
+    return result;
+};
+
+const addToLeaderboard = async (db, entry) => {
+    const result = await db.none('INSERT INTO leaderboard(username, score) VALUES(${username}, ${score})', entry);
+    return result;
+};
+
 module.exports = {
     dbInit,
     dbSeedSeasons,
@@ -140,4 +150,6 @@ module.exports = {
     getHousematesBySeason,
     getAllEffects,
     getEffectsBySeason,
+    getAllLeaderboard,
+    addToLeaderboard,
 };

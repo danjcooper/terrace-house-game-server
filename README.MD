@@ -13,6 +13,8 @@ The API is hosted [here](https://terrace-house-server.herokuapp.com/).
 | GET    | /seasons                | Returns an array of seasons with stats for each in [this format]().                                                                                  |
 | GET    | /housemates/:season     | returns all the housemate data for a certain season in [this format](). Parameters should be pass based on [this naming convention]().               |
 | GET    | /database/buildDatabase | Builds/rebuilds the database and with any updated data in the CSV. N.B. This is not available on Prod or without the relevant environment variables. |
+| POST   | /leaderboard/new        | Adds a new entry to the leaderboard. Sent with `{username: string, score: number}` in the body.                                                      |
+| GET    | /leaderboard/all        | Gets the leaderboard                                                                                                                                 |
 
 ## Data Formats.
 
