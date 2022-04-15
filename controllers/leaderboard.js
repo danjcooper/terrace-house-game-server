@@ -11,7 +11,7 @@ const getLeaderboard = async (req, res) => {
 
 const addToLeaderboard = async (req, res) => {
     try {
-        const result = await Leaderboard.add({ username: 'dan', score: 3000 });
+        const result = await Leaderboard.add(req.body);
         res.status(200).send(result);
     } catch (error) {
         res.status(500).send(error.message);
