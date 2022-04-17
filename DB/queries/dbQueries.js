@@ -135,6 +135,11 @@ const getAllLeaderboard = async db => {
     return result;
 };
 
+const getTopOneHundred = async db => {
+    const result = await db.any(`SELECT * FROM leaderboard ORDER BY score DESC LIMIT 100`);
+    return result;
+};
+
 const addToLeaderboard = async (db, entry) => {
     const result = await db.none('INSERT INTO leaderboard(username, score) VALUES(${username}, ${score})', entry);
     return result;
@@ -152,4 +157,5 @@ module.exports = {
     getEffectsBySeason,
     getAllLeaderboard,
     addToLeaderboard,
+    getTopOneHundred,
 };

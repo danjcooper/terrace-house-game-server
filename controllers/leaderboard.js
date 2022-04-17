@@ -9,6 +9,15 @@ const getLeaderboard = async (req, res) => {
     }
 };
 
+const getTopOneHundred = async (req, res) => {
+    try {
+        const result = await Leaderboard.topOneHundred;
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+
 const addToLeaderboard = async (req, res) => {
     try {
         const result = await Leaderboard.add(req.body);
@@ -18,4 +27,4 @@ const addToLeaderboard = async (req, res) => {
     }
 };
 
-module.exports = { getLeaderboard, addToLeaderboard };
+module.exports = { getLeaderboard, addToLeaderboard, getTopOneHundred };

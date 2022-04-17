@@ -34,6 +34,17 @@ class Leaderboard {
             }
         });
     }
+
+    static get topOneHundred() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const result = await dbQueries.getTopOneHundred(db);
+                resolve(result);
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
 }
 
 module.exports = Leaderboard;
