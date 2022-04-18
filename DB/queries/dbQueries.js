@@ -131,7 +131,7 @@ const getHousematesBySeason = async (db, seasons) => {
 };
 
 const getAllLeaderboard = async db => {
-    const result = await db.any(`SELECT * FROM leaderboard`);
+    const result = await db.any(`SELECT * FROM leaderboard ORDER BY score DESC`);
     return result;
 };
 
@@ -141,7 +141,10 @@ const getTopOneHundred = async db => {
 };
 
 const addToLeaderboard = async (db, entry) => {
-    const result = await db.none('INSERT INTO leaderboard(username, score) VALUES(${username}, ${score})', entry);
+    const result = await db.one(
+        'INSERT INTO leaderboard(username, score) VALUES(${username}, ${score}) RETURNING id',
+        entry
+    );
     return result;
 };
 
