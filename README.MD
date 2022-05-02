@@ -2,6 +2,7 @@
 
 An API that provides data for the reality tv show Terrace House. <br>
 The API is hosted [here](https://terrace-house-server.herokuapp.com/).
+[Database Structure](https://dbdiagram.io/d/61892fe402cf5d186b4b6f9d)
 
 ## About this project.
 
