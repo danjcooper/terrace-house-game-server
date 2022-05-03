@@ -43,6 +43,7 @@ class Leaderboard {
 
                 for (let i = 0; i < allResults.length; i++) {
                     if (allResults[i].id === response.id) {
+                        allResults[i].isCurrentScore = true;
                         targetIndex = i;
                         break;
                     }
