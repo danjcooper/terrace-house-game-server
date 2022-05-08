@@ -51,10 +51,11 @@ class Leaderboard {
                 if (!targetIndex) throw new Error('Score index was not found.');
 
                 // Return the entries that are 5 above and 5 below the users score.
-                const targetStart = targetIndex - 5;
-                const targetEnd = targetIndex + 6;
+                const targetStart = targetIndex - 2;
+                const targetEnd = targetIndex + 3;
 
                 const final = allResults.slice(targetStart, targetEnd);
+                console.log(final);
                 resolve(final);
             } catch (error) {
                 reject(error);
