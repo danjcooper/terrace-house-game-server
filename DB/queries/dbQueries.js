@@ -77,7 +77,7 @@ const getAllHousemates = async db => {
 };
 
 const getAllSeasons = async db => {
-    const result = await db.any(`SELECT * FROM seasons LIMIT row_count OFFSET offset`);
+    const result = await db.any(`SELECT * FROM seasons`);
     return result;
 };
 
