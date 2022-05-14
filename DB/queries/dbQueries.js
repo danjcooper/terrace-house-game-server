@@ -77,7 +77,7 @@ const getAllHousemates = async db => {
 };
 
 const getAllSeasons = async db => {
-    const result = await db.any(`SELECT * FROM seasons`);
+    const result = await db.any(`SELECT * FROM seasons LIMIT row_count OFFSET offset`);
     return result;
 };
 
@@ -130,13 +130,14 @@ const getHousematesBySeason = async (db, seasons) => {
     return result;
 };
 
-const getAllLeaderboard = async db => {
+const getAllLeaderboard = async (db, limit, offset) => {
     const result = await db.any(`SELECT * FROM leaderboard ORDER BY score DESC`);
     return result;
 };
 
-const getTopOneHundred = async db => {
-    const result = await db.any(`SELECT * FROM leaderboard ORDER BY score DESC LIMIT 100`);
+const getLeaderboardWithPagination = async (db, limit, offset) => {
+    const temp = [limit, offset];
+    const result = await db.any(`SELECT * FROM leaderboard ORDER BY score DESC LIMIT $1 OFFSET $2`, temp);
     return result;
 };
 
@@ -160,5 +161,5 @@ module.exports = {
     getEffectsBySeason,
     getAllLeaderboard,
     addToLeaderboard,
-    getTopOneHundred,
+    getLeaderboardWithPagination,
 };
