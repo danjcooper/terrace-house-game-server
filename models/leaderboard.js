@@ -63,10 +63,14 @@ class Leaderboard {
         });
     }
 
-    static get topOneHundred() {
+    static topLeaderboardWithOffset(limit, offset) {
         return new Promise(async (resolve, reject) => {
             try {
-                const result = await dbQueries.getTopOneHundred(db);
+                const response = await dbQueries.getLeaderboardWithPagination(db, limit, offset);
+                const result = response.map((result, i) => {
+                    result.position = i + 1 + parseInt(offset);
+                    return Leaderboard.create(result);
+                });
                 resolve(result);
             } catch (error) {
                 reject(error);

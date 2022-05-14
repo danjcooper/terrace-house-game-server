@@ -3,8 +3,7 @@ const router = express.Router();
 
 const leaderboardController = require('../controllers/leaderboard');
 
-router.get('/all', leaderboardController.getLeaderboard);
-router.get('/top', leaderboardController.getTopOneHundred);
+router.get('/all/:limit/:offset', leaderboardController.getLeaderboardWithPagination);
 router.post('/new', leaderboardController.addToLeaderboard);
 
 module.exports = router;
